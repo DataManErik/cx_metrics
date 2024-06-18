@@ -1,5 +1,6 @@
 #This query will convert the table's datatypes so the columns can be aggregated later. 
 #reply_time and full_resolution_time are in minutes, the query divides these by 60 to convert to hours.
+#SUBSTRING_INDEX is used to remove errant characters from the agent and manager dimensions.	
 #The WHERE clause filters out the single row of null values.
 SELECT
 	CAST(reply_time/60 AS DECIMAL(10,2)) AS reply_time, #Rounding to 1 decimal resulted in zero values for some records
