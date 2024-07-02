@@ -1,2 +1,2 @@
 # cx_metrics
-CX Metrics Analysis Project
+This repository includes queries written to evaluate a customer experience dataset.
