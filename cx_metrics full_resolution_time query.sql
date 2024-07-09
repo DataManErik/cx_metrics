@@ -65,6 +65,6 @@ SELECT
         FROM prep
         WHERE prep.reply_time > 0
         AND prep.full_resolution_time = 0
-	) AS some_reply_but_zero_resolution_time,
+	) AS count_some_reply_but_zero_resolution_time,
 	COUNT(*) AS count_records
 FROM prep;
