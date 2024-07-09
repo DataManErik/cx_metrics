@@ -36,7 +36,7 @@ SELECT
 		#This subquery orders reply_time from smallest to largest, assigns a rowindex inreasing by 1 to each row.
 			SELECT
 			@rowindex := @rowindex + 1 AS rowindex,
-			reply_time
+			prep.reply_time
 			FROM prep
 			ORDER BY reply_time
 		) as reply_med_prep
@@ -50,14 +50,14 @@ SELECT
 		SELECT COUNT(*) 
 		FROM prep 
         	WHERE prep.reply_time =  0
-        	AND full_resolution_time = 0
+        	AND prep.full_resolution_time = 0
 	) AS count_zero_both_time,
 	(
 	#This subquery counts the number of records where "reply_time" is 0 but "full_resolution_time" is > 0.
 		SELECT COUNT(*) 
 		FROM prep 
 		WHERE prep.reply_time =  0
-		AND full_resolution_time > 0
+		AND prep.full_resolution_time > 0
 	) AS count_zero_reply_but_some_resolution_time,
 	COUNT(*) AS count_records
 FROM prep;
