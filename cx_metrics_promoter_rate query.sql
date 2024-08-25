@@ -8,13 +8,13 @@ WITH prep AS
 SELECT
 	CAST(reply_time/60 AS DECIMAL(10,2)) AS reply_time, #Rounding to 1 decimal resulted in zero values for some records
 	CAST(full_resolution_time/60 AS DECIMAL(10,2)) AS full_resolution_time, #Rounding to 1 decimal resulted in zero values for some records
-    CAST(num_replies AS SIGNED) AS num_replies, #MySQL requires either 'SIGNED' or 'UNSIGNED' for the CAST function to produce an integer.
+    	CAST(num_replies AS SIGNED) AS num_replies, #MySQL requires either 'SIGNED' or 'UNSIGNED' for the CAST function to produce an integer.
 	CAST(is_rerouted AS SIGNED) AS is_rerouted,
-    CAST(is_issue_solved AS SIGNED) AS is_issue_solved,
+    	CAST(is_issue_solved AS SIGNED) AS is_issue_solved,
 	CAST(is_promoter AS SIGNED) AS is_promoter,
 	CAST(group_number AS SIGNED) AS group_number,
-    SUBSTRING_INDEX(agent, 'Ê', 1) AS agent,
-    SUBSTRING_INDEX(manager,'Ê', 1) AS manager
+    	SUBSTRING_INDEX(agent, 'Ê', 1) AS agent,
+    	SUBSTRING_INDEX(manager,'Ê', 1) AS manager
 FROM cx_metrics_2
 WHERE id IS NOT NULL
 )
